@@ -25,7 +25,7 @@ git clone https://github.com/your-username/simple-shell.git nafsh
 - Compile the Shell: Navigate to the cloned repository's directory and compile the shell using the provided Makefile.
 
 ```shell
-cd simple-shell
+cd nafsh
 make
 ``` 
 - Run the Shell: After compiling, you can run the shell by simply executing the binary.
