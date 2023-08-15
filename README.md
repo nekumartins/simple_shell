@@ -20,7 +20,7 @@ Follow these steps to get the Simple Shell up and running on your local machine.
 
 - Clone the Repository: Start by cloning this repository to your local machine.
 ```shell
-git clone https://github.com/your-username/simple-shell.git 
+git clone https://github.com/your-username/simple-shell.git nafsh
 ```
 - Compile the Shell: Navigate to the cloned repository's directory and compile the shell using the provided Makefile.
 
