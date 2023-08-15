@@ -6,9 +6,13 @@ This project is intended to serve as an educational tool and starting point for 
 
 ## Features
 **Command Execution**: Execute basic shell commands such as ls, cd, echo, etc.
+
 **I/O Redirection**: Redirect standard input and output using < and >.
+
 **Piping**: Chain commands together using the | operator.
+
 **Built-in Commands**: Implement a subset of built-in commands like exit and help.
+
 **Signal Handling**: Handle signals like Ctrl+C gracefully.
 
 ## Getting Started
