@@ -1,5 +1,7 @@
 # The Neku and Favour Shell(NAFSH)
 
+# The Favour and Neku Shell(FARSH) sounds better though
+
 **Nafsh** is a basic Unix command line interpreter written in C, designed to replicate some of the functionality of the standard Unix shell (sh). It provides users with a simple interface to interact with the underlying operating system through a command line interface.
 
 This project is intended to serve as an educational tool and starting point for those looking to understand the fundamentals of shell scripting and command line interpretation.
