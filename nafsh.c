@@ -4,6 +4,8 @@
 
 #define MAX 1024
 
+void nafsh(void);
+
 int main()
 {
     nafsh();
@@ -23,5 +25,6 @@ void nafsh(void)
         {
             break;
         }
+        fflush(stdin);
     }
 }
