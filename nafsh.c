@@ -1,10 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "nafsh.h"
 
 #define MAX 1024
 
-void nafsh(void);
+void nafsh();
 
 int main()
 {
@@ -17,14 +15,18 @@ void nafsh(void)
 {
     char req[MAX];
 
-    while (1)
-    {
-        printf("nafsh$ ");
-        scanf(req);
-        if (req == "exit")
-        {
-            break;
-        }
-        fflush(stdin);
-    }
+    scanf(req);
+    printf(req);
+
+    // while (1)
+    // {
+    //     printf("nafsh$ ");
+    //     scanf(req);
+    //     printf(req, "\n");
+    //     if (strcmp(req, "exit") == 0)
+    //     {
+    //         break;
+    //     }
+    //     fflush(stdin);
+    // }
 }
