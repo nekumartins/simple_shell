@@ -6,18 +6,22 @@
 
 int main()
 {
+    nafsh();
+
+    return (0);
+}
+
+void nafsh(void)
+{
     char req[MAX];
 
     while (1)
     {
         printf("nafsh$ ");
         scanf(req);
-        // if (req == "q")
-        // {
-        //     break;
-        // }
-        // fflush(stdin);
+        if (req == "exit")
+        {
+            break;
+        }
     }
-
-    return (0);
 }
