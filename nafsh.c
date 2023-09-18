@@ -1,7 +1,16 @@
 #include <string.h>
 #include "nafsh.h"
 
+void nafsh(void);
+
 int main()
+{
+    nafsh();
+
+    return (0);
+}
+
+void nafsh(void)
 {
     char req[MAX];
 
@@ -9,12 +18,10 @@ int main()
     {
         printf("nafsh$ ");
         scanf(req);
-        // if (req == "q")
-        // {
-        //     break;
-        // }
-        // fflush(stdin);
+        if (req == "exit")
+        {
+            break;
+        }
+        fflush(stdin);
     }
-
-    return (0);
 }
