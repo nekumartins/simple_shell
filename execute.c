@@ -1,6 +1,5 @@
 #include "nafsh.h"
 
-
 int nafshExecute(char **args)
 {
   int i;
