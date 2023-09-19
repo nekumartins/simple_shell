@@ -1,6 +1,5 @@
 #include "nafsh.h"
 
-
 int nafshLaunch(char **args)
 {
   pid_t pid;
