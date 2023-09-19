@@ -55,9 +55,9 @@ int nafshHelp(char **args)
   for (i = 0; i < nafshBuiltins(); i++) {
     printf("  %s\n", builtin_str[i]);
   }
-
   printf("Use the man command for information on other programs.\n");
-  return 1;
+
+  return (1);
 }
 
 int nafshExit(char **args)
