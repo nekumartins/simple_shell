@@ -32,5 +32,5 @@ int nafshLaunch(char **args)
     (void)waitPid;
   }
 
-  return 1;
+  return (1);
 }
