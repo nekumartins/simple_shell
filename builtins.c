@@ -9,7 +9,7 @@ char *builtin_str[] = {
   "exit"
 };
 
-/* Define the array of pointers to built-in functions */ 
+//Define the array of pointers to built-in functions
 int (*builtin_func[]) (char **) = {
   &nafshCd,
   &nafshHelp,
