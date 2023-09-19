@@ -15,8 +15,8 @@ void nafsh(void)
 {
     char req[MAX];
 
-    scanf(req);
-    printf(req);
+    scanf("%c",&req[0]);
+    printf("%c",req[0]);
 
     // while (1)
     // {
