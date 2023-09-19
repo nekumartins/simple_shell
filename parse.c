@@ -33,5 +33,5 @@ char **nafshSplitLine(char *line)
   }
   tokens[position] = NULL;
 
-  return tokens;
+  return (tokens);
 }
