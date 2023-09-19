@@ -32,5 +32,6 @@ char **nafshSplitLine(char *line)
     token = strtok(NULL, TOKDELIM);
   }
   tokens[position] = NULL;
+
   return tokens;
 }
