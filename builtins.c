@@ -23,9 +23,8 @@ int nafshBuiltins()
   return (size);
 }
 
-/*
-  Builtin function implementations.
-*/
+//Builtin function implementations.
+
 int nafshCd(char **args)
 {
   if (args[1] == NULL) {
