@@ -2,7 +2,7 @@
 
 
 
-int main(int argc, char **argv)
+int main(void)
 {
     nafsh();
     return (EXIT_SUCCESS);

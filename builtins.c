@@ -46,6 +46,8 @@ int nafshCd(char **args)
 int nafshHelp(char **args)
 {
   int i;
+  (void)args;
+  
   printf("Neku and Favour's NAFSH\n");
   printf("Type program names and arguments, then hit enter.\n");
   printf("The following  functions are built in:\n");
@@ -60,5 +62,6 @@ int nafshHelp(char **args)
 
 int nafshExit(char **args)
 {
+  (void)args;
   return 0;
 }
