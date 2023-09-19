@@ -19,6 +19,7 @@ int (*builtin_func[]) (char **) = {
 int nafshBuiltins() 
 {
     int size = sizeof(builtin_str) / sizeof(char *);
+
   return (size);
 }
 
