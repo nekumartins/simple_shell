@@ -1,13 +1,7 @@
 #include "nafsh.h"
-/*
-  Function Declarations for builtin shell commands:
- */
 
-
-
-/*
-  List of builtin commands, followed by their corresponding functions.
- */
+//Function Declarations for builtin shell commands:
+//List of builtin commands, followed by their corresponding functions.
 
 char *builtin_str[] = {
   "cd",
