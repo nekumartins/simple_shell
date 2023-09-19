@@ -34,7 +34,7 @@ int nafshCd(char **args)
       perror("lsh");
     }
   }
-  return 1;
+  return (1);
 }
 
 int nafshHelp(char **args)
