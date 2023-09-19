@@ -63,5 +63,6 @@ int nafshHelp(char **args)
 int nafshExit(char **args)
 {
   (void)args;
+
   return (0);
 }
