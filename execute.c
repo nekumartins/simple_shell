@@ -6,7 +6,7 @@ int nafshExecute(char **args)
 
   if (args[0] == NULL) {
     /* An empty command was entered. */ 
-    return 1;
+    return (1);
   }
 
   for (i = 0; i < nafshBuiltins(); i++) {
