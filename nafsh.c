@@ -1,6 +1,5 @@
 #include "nafsh.h"
 
-
 int main(void)
 {
     nafsh();
