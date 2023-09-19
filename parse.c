@@ -1,7 +1,5 @@
 #include "nafsh.h"
 
-
-
 char **nafshSplitLine(char *line)
 {
   int buffsize = TOKSIZE, position = 0;
