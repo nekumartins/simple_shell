@@ -12,7 +12,7 @@ void nafsh(void)
 	int status;
 
 	do {
-		printf("$ ");
+		printf("nafsh$ ");
 		line = nafshReadLine();
 		args = nafshSplitLine(line);
 		status = nafshExecute(args);
