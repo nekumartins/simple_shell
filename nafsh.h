@@ -24,7 +24,7 @@ extern char *builtin_str[];
 /*Define the array of pointers to built-in functions*/
 extern int (*builtin_func[]) (char **);
 
-int nafshBuiltins();
+int nafshBuiltins(void);
 int nafshExecute(char **args);
 
 #endif /*NAFSH_H*/
