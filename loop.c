@@ -13,12 +13,25 @@ void nafsh(void)
 
 	do {
 		printf("nafsh$ ");
+		fflush(stdout);
+
+		/* Read a line of input, checking for EOF */
 		line = nafshReadLine();
+
+		if (line == NULL)
+		{
+			/* Handle Ctrl+D (EOF) by exiting the shell gracefully */
+			printf("\n");
+			break;
+		}
+
 		args = nafshSplitLine(line);
 		status = nafshExecute(args);
 
 		free(line);
 		free(args);
+
+		printf("\n");
 	} while (status);
 }
 
@@ -39,15 +52,17 @@ char *nafshReadLine(void)
 		fprintf(stderr, "nafsh: allocation error\n");
 		exit(EXIT_FAILURE);
 	}
-
 	while (1)
 	{
-		/* Read a character */
 		c = getchar();
 
-		/* If we hit EOF, replace it with a null character and return. */
-		if (c == EOF || c == '\n')
+		if (c == '\n' || c == EOF)
 		{
+			if (c == EOF && position == 0)
+			{
+				free(buffer);
+				return (NULL);
+			}
 			buffer[position] = '\0';
 			return (buffer);
 		}
@@ -56,8 +71,6 @@ char *nafshReadLine(void)
 			buffer[position] = c;
 		}
 		position++;
-
-		/* If we have exceeded the buffer, reallocate.*/
 		if (position >= buffsize)
 		{
 			buffsize += MAX;
