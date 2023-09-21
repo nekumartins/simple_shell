@@ -30,8 +30,6 @@ void nafsh(void)
 
 		free(line);
 		free(args);
-
-		printf("\n");
 	} while (status);
 }
 
@@ -42,8 +40,7 @@ void nafsh(void)
 
 char *nafshReadLine(void)
 {
-	int buffsize = MAX;
-	int position = 0;
+	int buffsize = MAX, position = 0;
 	char *buffer = malloc(sizeof(char) * buffsize);
 	int c;
 
@@ -56,13 +53,13 @@ char *nafshReadLine(void)
 	{
 		c = getchar();
 
-		if (c == '\n' || c == EOF)
+		if (c == EOF) /* If we hit EOF, return NULL to indicate Ctrl+D (EOF) */
 		{
-			if (c == EOF && position == 0)
-			{
-				free(buffer);
-				return (NULL);
-			}
+			free(buffer);
+			return (NULL);
+		}
+		else if (c == '\n')
+		{
 			buffer[position] = '\0';
 			return (buffer);
 		}
