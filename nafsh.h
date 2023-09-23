@@ -6,11 +6,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/wait.h>
+#include <signal.h>
 
 #define MAX 1024
 #define TOKSIZE 64
 #define TOKDELIM " \t\r\n\a"
 
+void nafshSigHandler(int signum);
 void nafsh(void);
 char *nafshReadLine(void);
 char **nafshSplitLine(char *line);

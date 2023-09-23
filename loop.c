@@ -1,5 +1,19 @@
 #include "nafsh.h"
 
+
+/**
+ * nafshSigHandler - Prints a new prompt upon a signal.
+ * @signum: The signal.
+ */
+void nafshSigHandler(int signum)
+{
+	char *newPrompt = "\n$ ";
+
+	(void)signum;
+	signal(SIGINT, nafshSigHandler);
+	write(STDIN_FILENO, newPrompt, 3);
+}
+
 /**
  * nafsh - Main loop function
  * Return: none
@@ -11,11 +25,13 @@ void nafsh(void)
 	char **args;
 	int status;
 
+	signal(SIGINT, nafshSigHandler);
+
 	do {
-		printf("nafsh$ ");
+		printf("$ ");
 		fflush(stdout);
 
-		/* Read a line of input, checking for EOF */
+		/* Read a line of input */
 		line = nafshReadLine();
 
 		if (line == NULL)
@@ -32,6 +48,7 @@ void nafsh(void)
 		free(args);
 	} while (status);
 }
+
 
 /**
  * nafshReadLine - Read line function
