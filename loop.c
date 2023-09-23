@@ -24,11 +24,12 @@ void nafsh(void)
 	char *line;
 	char **args;
 	int status;
+	char *prompt = "$ ", *newLine = "\n";
 
 	signal(SIGINT, nafshSigHandler);
 
 	do {
-		printf("$ ");
+		write(STDOUT_FILENO, prompt, 2);
 		fflush(stdout);
 
 		/* Read a line of input */
@@ -37,6 +38,7 @@ void nafsh(void)
 		if (line == NULL)
 		{
 			/* Handle Ctrl+D (EOF) by exiting the shell gracefully */
+			write(STDOUT_FILENO, newLine, 1);
 			break;
 		}
 
