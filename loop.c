@@ -37,7 +37,6 @@ void nafsh(void)
 		if (line == NULL)
 		{
 			/* Handle Ctrl+D (EOF) by exiting the shell gracefully */
-			printf("\n");
 			break;
 		}
 
