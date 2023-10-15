@@ -25,12 +25,16 @@ void nafsh(void)
 	char **args;
 	int status;
 	char *prompt = "$ ", *newLine = "\n";
+	bool interactive = isatty(STDIN_FILENO);
 
 	signal(SIGINT, nafshSigHandler);
 
 	do {
-		write(STDOUT_FILENO, prompt, 2);
-		fflush(stdout);
+		if (interactive)
+		{
+			write(STDOUT_FILENO, prompt, 2);
+			fflush(stdout);
+		}
 
 		/* Read a line of input */
 		line = nafshReadLine();

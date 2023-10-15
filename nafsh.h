@@ -7,6 +7,7 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <signal.h>
+#include <stdbool.h>
 
 #define MAX 1024
 #define TOKSIZE 64
