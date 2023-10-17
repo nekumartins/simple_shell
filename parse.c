@@ -13,7 +13,7 @@ char **nafshSplitLine(char *line)
 
 	if (!tokens)
 	{
-		fprintf(stderr, "nafsh: allocation error\n");
+		write(STDERR_FILENO, "nafsh: allocation error\n", 24);
 		exit(EXIT_FAILURE);
 	}
 
@@ -29,7 +29,7 @@ char **nafshSplitLine(char *line)
 			tokens = realloc(tokens, buffsize * sizeof(char *));
 			if (!tokens)
 			{
-				fprintf(stderr, "nafsh: allocation error\n");
+				write(STDERR_FILENO, "nafsh: allocation error\n", 24);
 				exit(EXIT_FAILURE);
 			}
 		}

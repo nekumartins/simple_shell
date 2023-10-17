@@ -68,7 +68,7 @@ char *nafshReadLine(void)
 
 	if (!buffer)
 	{
-		fprintf(stderr, "nafsh: allocation error\n");
+		write(STDERR_FILENO, "nafsh: allocation error\n", 24);
 		exit(EXIT_FAILURE);
 	}
 	while (1)
@@ -96,7 +96,7 @@ char *nafshReadLine(void)
 			buffer = realloc(buffer, buffsize);
 			if (buffer == NULL)
 			{
-				fprintf(stderr, "nafsh: allocation error\n");
+				write(STDERR_FILENO, "nafsh: allocation error\n", 24);
 				exit(EXIT_FAILURE);
 			}
 		}
