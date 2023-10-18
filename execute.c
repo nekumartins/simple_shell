@@ -14,7 +14,11 @@ int nafshExecute(char **args)
 		/* An empty command was entered. */
 		return (1);
 	}
-
+	if (args[0][0] == '#')
+	{
+		/* Ignore comments */
+		return (1);
+	}
 	for (i = 0; i < nafshBuiltins(); i++)
 	{
 		if (strcmp(args[0], builtin_str[i]) == 0)

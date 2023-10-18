@@ -8,30 +8,37 @@
 int nafshLaunch(char **args)
 {
 	pid_t pid;
-	int status;
+int status;
 
-	pid = fork();
-	if (pid == 0)
+pid = fork();
+if (pid == 0)
+{
+	/*Child process*/
+	if (execvp(args[0], args) == -1)
 	{
-		/* Child process */
-		if (execvp(args[0], args) == -1)
-		{
-			perror("nafsh");
-			exit(EXIT_FAILURE);
-		}
-	}
-	else if (pid < 0)
-	{
-		/* Error forking */
 		perror("nafsh");
 	}
-	else
+	exit(EXIT_FAILURE);
+}
+else if (pid < 0)
+{
+	/*Fork error*/
+	perror("nafsh");
+}
+else
+{
+	/*Parent process*/
+	do {
+		waitpid(pid, &status, WUNTRACED);
+	} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+
+	if (WIFSIGNALED(status) && WTERMSIG(status) == SIGKILL)
 	{
-		/* Parent process */
-		do {
-			waitpid(pid, &status, WUNTRACED);
-		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+		/*Program was terminated by SIGKILL*/
+		exit(EXIT_SUCCESS);
 	}
 
+	return (WEXITSTATUS(status));
+}
 	return (1);
 }
