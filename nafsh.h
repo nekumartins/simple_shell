@@ -16,7 +16,7 @@
 void nafshSigHandler(int signum);
 void nafsh(void);
 char *nafshReadLine(void);
-char **nafshSplitLine(char *line);
+char **nafshSplitLine(char *line, char *delim);
 int nafshLaunch(char **args);
 int nafshCd(char **args);
 int nafshHelp(char **args);
@@ -27,6 +27,7 @@ extern char *builtin_str[];
 /*Define the array of pointers to built-in functions*/
 extern int (*builtin_func[]) (char **);
 
+int nafshAtoi(char *stri);
 int nafshBuiltins(void);
 int nafshExecute(char **args);
 

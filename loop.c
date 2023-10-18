@@ -46,7 +46,7 @@ void nafsh(void)
 			break;
 		}
 
-		args = nafshSplitLine(line);
+		args = nafshSplitLine(line, TOKDELIM);
 		status = nafshExecute(args);
 
 		free(line);
