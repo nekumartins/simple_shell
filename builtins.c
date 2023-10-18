@@ -81,6 +81,12 @@ int nafshHelp(char **args)
 
 int nafshExit(char **args)
 {
-	(void)args;
-	return (0);
+	int status = 0;
+
+	if (args[1] != NULL)
+	{
+		status = atoi(args[1]);
+	}
+
+	exit(status);
 }
