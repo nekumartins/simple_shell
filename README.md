@@ -61,4 +61,3 @@ nafsh$ cat file.txt | grep "pattern"
 simple-shell$ help
 simple-shell$ exit
 ```
-
