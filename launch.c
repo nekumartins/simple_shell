@@ -8,37 +8,49 @@
 int nafshLaunch(char **args)
 {
 	pid_t pid;
-int status;
+	int status;
+	int i;
 
-pid = fork();
-if (pid == 0)
-{
-	/*Child process*/
-	if (execvp(args[0], args) == -1)
+	 /* Remove comments from the arguments */
+    for (i = 0; args[i] != NULL; i++)
+    {
+        if (args[i][0] == '#')
+        {
+            args[i] = NULL;
+            break;
+        }
+    }
+
+
+	pid = fork();
+	if (pid == 0)
 	{
+		/*Child process*/
+		if (execvp(args[0], args) == -1)
+		{
+			perror("nafsh");
+		}
+		exit(EXIT_FAILURE);
+	}
+	else if (pid < 0)
+	{
+		/*Fork error*/
 		perror("nafsh");
 	}
-	exit(EXIT_FAILURE);
-}
-else if (pid < 0)
-{
-	/*Fork error*/
-	perror("nafsh");
-}
-else
-{
-	/*Parent process*/
-	do {
-		waitpid(pid, &status, WUNTRACED);
-	} while (!WIFEXITED(status) && !WIFSIGNALED(status));
-
-	if (WIFSIGNALED(status) && WTERMSIG(status) == SIGKILL)
+	else
 	{
-		/*Program was terminated by SIGKILL*/
-		exit(EXIT_SUCCESS);
-	}
+		/*Parent process*/
+		do {
+			waitpid(pid, &status, WUNTRACED);
+		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 
-	return (WEXITSTATUS(status));
-}
-	return (1);
+		if (WIFSIGNALED(status) && WTERMSIG(status) == SIGKILL)
+		{
+			/*Program was terminated by SIGKILL*/
+			exit(EXIT_SUCCESS);
+		}
+
+		return (WEXITSTATUS(status));
+	}
+		return (1);
 }

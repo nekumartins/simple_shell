@@ -36,7 +36,7 @@ int nafshAtoi(char *stri)
  */
 char **nafshSplitLine(char *line)
 {
-	 int buffsize = TOKSIZE;
+	int buffsize = TOKSIZE;
 	char **tokens = malloc(buffsize * sizeof(char *));
 	char *token;
 	int position = 0;
