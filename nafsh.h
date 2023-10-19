@@ -16,7 +16,7 @@
 void nafshSigHandler(int signum);
 void nafsh(void);
 char *nafshReadLine(void);
-char **nafshSplitLine(char *line, char *delim);
+char **nafshSplitLine(char *line);
 int nafshLaunch(char **args);
 int nafshCd(char **args);
 int nafshHelp(char **args);

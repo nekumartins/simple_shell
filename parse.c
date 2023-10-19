@@ -32,10 +32,9 @@ int nafshAtoi(char *stri)
 /**
  * nafshSplitLine - Split a line into tokens
  * @line: line
- * @delim: delimiter
  * Return: tokens
  */
-char **nafshSplitLine(char *line, char *delim)
+char **nafshSplitLine(char *line)
 {
 	 int buffsize = TOKSIZE;
 	char **tokens = malloc(buffsize * sizeof(char *));
@@ -48,31 +47,26 @@ char **nafshSplitLine(char *line, char *delim)
 		exit(EXIT_FAILURE);
 	}
 
-	token = line;
-	while (*line != '\0')
+	token = strtok(line, TOKDELIM);
+	while (token != NULL)
 	{
-		if (*line == *delim)
-		{
-			*line = '\0';
-			tokens[position] = token;
-			position++;
-			token = line + 1;
+		tokens[position] = token;
+		position++;
 
-			if (position >= buffsize)
+		if (position >= buffsize)
+		{
+			buffsize += TOKSIZE;
+			tokens = realloc(tokens, buffsize * sizeof(char *));
+			if (!tokens)
 			{
-				buffsize += TOKSIZE;
-				tokens = realloc(tokens, buffsize * sizeof(char *));
-				if (!tokens)
-				{
-					write(STDERR_FILENO, "nafsh: allocation error\n", 24);
-					exit(EXIT_FAILURE);
-				}
+				write(STDERR_FILENO, "nafsh: allocation error\n", 24);
+				exit(EXIT_FAILURE);
 			}
 		}
-		line++;
+
+		token = strtok(NULL, TOKDELIM);
 	}
-	tokens[position] = token;
-	tokens[position + 1] = NULL;
+	tokens[position] = NULL;
 
 	return (tokens);
 }
