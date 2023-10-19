@@ -32,4 +32,3 @@ int nafshBuiltins(void);
 int nafshExecute(char **args);
 
 #endif /*NAFSH_H*/
-
