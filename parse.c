@@ -45,7 +45,6 @@ char **nafshSplitLine(char *line)
 		write(STDERR_FILENO, "nafsh: allocation error\n", 24);
 		exit(EXIT_FAILURE);
 	}
-
 	token = strtok(line, TOKDELIM);
 	while (token != NULL)
 	{
