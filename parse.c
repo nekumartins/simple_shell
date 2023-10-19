@@ -60,7 +60,6 @@ char **nafshSplitLine(char *line)
 				exit(EXIT_FAILURE);
 			}
 		}
-
 		token = strtok(NULL, TOKDELIM);
 	}
 	tokens[position] = NULL;
