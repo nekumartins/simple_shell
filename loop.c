@@ -99,4 +99,3 @@ char *nafshReadLine(void)
 		}
 	}
 }
-
