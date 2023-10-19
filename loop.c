@@ -44,7 +44,6 @@ void nafsh(void)
 			write(STDOUT_FILENO, newLine, 1);
 			break;
 		}
-
 		args = nafshSplitLine(line);
 		status = nafshExecute(args);
 
