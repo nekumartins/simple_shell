@@ -72,7 +72,6 @@ char *nafshReadLine(void)
 	while (1)
 	{
 		c = getchar();
-
 		if (c == EOF) /* If we hit EOF, return NULL to indicate Ctrl+D (EOF) */
 		{
 			free(buffer);
