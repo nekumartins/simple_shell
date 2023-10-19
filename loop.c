@@ -28,7 +28,6 @@ void nafsh(void)
 	bool interactive = isatty(STDIN_FILENO);
 
 	signal(SIGINT, nafshSigHandler);
-
 	do {
 		if (interactive)
 		{
