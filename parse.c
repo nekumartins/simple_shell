@@ -50,7 +50,6 @@ char **nafshSplitLine(char *line)
 	{
 		tokens[position] = token;
 		position++;
-
 		if (position >= buffsize)
 		{
 			buffsize += TOKSIZE;
