@@ -15,7 +15,6 @@ int nafshAtoi(char *stri)
 		sign = -1;
 		stri++;
 	}
-
 	while (*stri != '\0')
 	{
 		if (*stri < '0' || *stri > '9')
