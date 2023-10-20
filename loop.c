@@ -1,6 +1,5 @@
 #include "nafsh.h"
 
-
 /**
  * nafshSigHandler - Prints a new prompt upon a signal.
  * @signum: The signal.
@@ -18,7 +17,6 @@ void nafshSigHandler(int signum)
  * nafsh - Main loop function
  * Return: none
  */
-
 void nafsh(void)
 {
 	char *line;
@@ -52,12 +50,10 @@ void nafsh(void)
 	} while (status);
 }
 
-
 /**
  * nafshReadLine - Read line function
  * Return: line
  */
-
 char *nafshReadLine(void)
 {
 	int buffsize = MAX, position = 0;
