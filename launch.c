@@ -11,44 +11,32 @@ int nafshLaunch(char **args)
 	int status;
 	int i;
 
-	 /* Remove comments from the arguments */
-    for (i = 0; args[i] != NULL; i++)
-    {
-        if (args[i][0] == '#')
-        {
-            args[i] = NULL;
-            break;
-        }
-    }
-
-
+	for (i = 0; args[i] != NULL; i++) /* Remove comments from the arguments */
+	{
+		if (args[i][0] == '#')
+		{
+			args[i] = NULL;
+			break;
+		}
+	}
 	pid = fork();
 	if (pid == 0)
 	{
-		/*Child process*/
-		if (execvp(args[0], args) == -1)
-		{
+		if (execvp(args[0], args) == -1)/*Child process*/
 			perror("nafsh");
-		}
 		exit(EXIT_FAILURE);
 	}
 	else if (pid < 0)
 	{
-		/*Fork error*/
-		perror("nafsh");
+		perror("nafsh");/*Fork error*/
 	}
 	else
 	{
-		/*Parent process*/
-		do {
+		do {/*Parent process*/
 			waitpid(pid, &status, WUNTRACED);
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
-
 		if (WIFSIGNALED(status) && WTERMSIG(status) == SIGKILL)
-		{
-			/*Program was terminated by SIGKILL*/
-			exit(EXIT_SUCCESS);
-		}
+			exit(EXIT_SUCCESS);/*Program was terminated by SIGKILL*/
 
 		return (WEXITSTATUS(status));
 	}
