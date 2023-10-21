@@ -37,15 +37,35 @@ int nafshBuiltins(void)
  */
 int nafshCd(char **args)
 {
-	if (args[1] == NULL)
+		if (args[1] == NULL)
 	{
-		fprintf(stderr, "nafsh: expected argument to \"cd\"\n");
+		char error_message[] = "nafsh: expected argument to \"cd\"\n";
+
+		write(STDERR_FILENO, error_message, strlen(error_message));
 	}
 	else
 	{
 		if (chdir(args[1]) != 0)
 		{
 			perror("nafsh");
+			return (0);
+		}
+		else
+		{
+			char cwd[1024];
+
+			if (getcwd(cwd, sizeof(cwd)) != NULL)
+			{
+				size_t len = strlen(cwd);
+
+				write(STDOUT_FILENO, cwd, len);
+				write(STDOUT_FILENO, "\n", 1);
+			}
+			else
+			{
+				perror("nafsh");
+				return (0);
+			}
 		}
 	}
 	return (1);
@@ -101,14 +121,15 @@ int nafshExit(char **args)
 				char errorMessage[] = "nafsh: exit: numeric argument required\n";
 
 				write(STDERR_FILENO, errorMessage, sizeof(errorMessage) - 1);
-				return (2); /* Return an error status for an illegal number*/
+				exit(2); /* Return an error status for an illegal number*/
 			}
 			status = status * 10 + (args[1][i] - '0');
 			i++;
+			free(args);
 		}
 
 		status *= sign;
 	}
-
+	free(args);
 	exit(status);
 }

@@ -39,6 +39,7 @@ void nafsh(void)
 		if (line == NULL)
 		{
 			/* Handle Ctrl+D (EOF) by exiting the shell gracefully */
+			free(line);
 			write(STDOUT_FILENO, newLine, 1);
 			break;
 		}
@@ -90,6 +91,7 @@ char *nafshReadLine(void)
 			if (buffer == NULL)
 			{
 				write(STDERR_FILENO, "nafsh: allocation error\n", 24);
+				free(buffer);
 				exit(EXIT_FAILURE);
 			}
 		}
