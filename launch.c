@@ -1,5 +1,4 @@
 #include "nafsh.h"
-
 /**
  * nafshLaunch - Launch process
  * @args: arguments
@@ -7,40 +6,67 @@
  */
 int nafshLaunch(char **args)
 {
-	pid_t pid;
-	int status, i;
-
 	if (args[0] == NULL)
 		/* An empty command was entered. */
 		return (1);
 
+	if (nafshExecuteBuiltins(args))
+		return (1);
+
+	if (nafshExecuteCommand(args))
+		return (1);
+
+	return (1);
+}
+
+/**
+ * nafshExecuteBuiltins - Execute built-in functions
+ * @args: arguments
+ * Return: 1 if a built-in function was executed, 0 otherwise
+ */
+int nafshExecuteBuiltins(char **args)
+{
+	int i;
+
 	for (i = 0; i < nafshBuiltins(); i++)
-	{ /* Check if the command is a built-in function. */
+	{
 		if (strcmp(args[0], builtin_str[i]) == 0)
 		{
 			return ((*builtin_func[i])(args));
 		}
 	}
-	pid = fork(); /* Fork a new process to execute the command. */
+
+	return (0);
+}
+
+/**
+ * nafshExecuteCommand - Execute a command
+ * @args: arguments
+ * Return: 1 if the command was executed, 0 otherwise
+ */
+int nafshExecuteCommand(char **args)
+{
+	pid_t pid;
+	int status;
+
+	pid = fork();
 	if (pid == 0)
 	{
-		if (execve(args[0], args, NULL) == -1) /* Child process */
+		if (execve(args[0], args, NULL) == -1)
 		{
 			perror("nafsh");
-			exit(2); /* Return exit status of 2 on error */
+			exit(2);
 		}
 		exit(EXIT_FAILURE);
 	}
 	else if (pid < 0)
-
-		perror("nafsh");/* Forking error */
+	{
+		perror("nafsh");
+	}
 	else
 	{
-		/* Parent process */
-		do {
-			waitpid(pid, &status, WUNTRACED);
-		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+		wait(&status);
 	}
 
-	return (WEXITSTATUS(status));
+	return (1);
 }
