@@ -39,33 +39,13 @@ int nafshCd(char **args)
 {
 		if (args[1] == NULL)
 	{
-		char error_message[] = "nafsh: expected argument to \"cd\"\n";
-
-		write(STDERR_FILENO, error_message, strlen(error_message));
+		chdir(getenv("HOME"));
 	}
 	else
 	{
 		if (chdir(args[1]) != 0)
 		{
 			perror("nafsh");
-			return (0);
-		}
-		else
-		{
-			char cwd[1024];
-
-			if (getcwd(cwd, sizeof(cwd)) != NULL)
-			{
-				size_t len = strlen(cwd);
-
-				write(STDOUT_FILENO, cwd, len);
-				write(STDOUT_FILENO, "\n", 1);
-			}
-			else
-			{
-				perror("nafsh");
-				return (0);
-			}
 		}
 	}
 	return (1);
