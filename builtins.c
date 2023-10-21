@@ -98,38 +98,30 @@ int nafshHelp(char **args)
  * @args: arguments
  * Return: Always 1
  */
-
 int nafshExit(char **args)
 {
 	int status = 0;
 
 	if (args[1] != NULL)
 	{
-		int i = 0;
-		int sign = 1;
 
-		if (args[1][0] == '-')
+	int exit_status = nafshAtoi(args[1]);
+
+		if (exit_status == 0 && *args[1] != '0')
 		{
-			sign = -1;
-			i++;
-		}
+			char error_message[] = "nafsh: exit: numeric argument required\n";
 
-		while (args[1][i] != '\0')
+			write(STDERR_FILENO, error_message, strlen(error_message));
+			exit(2);
+		}
+		if (exit_status < -2147483647 || exit_status > 2147483647)
 		{
-			if (args[1][i] < '0' || args[1][i] > '9')
-			{
-				char errorMessage[] = "nafsh: exit: numeric argument required\n";
+			char error_message[] = "nafsh: exit: numeric argument out of range\n";
 
-				write(STDERR_FILENO, errorMessage, sizeof(errorMessage) - 1);
-				exit(2); /* Return an error status for an illegal number*/
-			}
-			status = status * 10 + (args[1][i] - '0');
-			i++;
-			free(args);
+			write(STDERR_FILENO, error_message, strlen(error_message));
+			exit(2);
 		}
-
-		status *= sign;
+		status = (int) exit_status;
 	}
-	free(args);
 	exit(status);
 }
