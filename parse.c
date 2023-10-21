@@ -19,7 +19,7 @@ int nafshAtoi(char *stri)
 	{
 		if (*stri < '0' || *stri > '9')
 		{
-			break;
+			return (-1);
 		}
 		result = result * 10 + (*stri - '0');
 		stri++;
