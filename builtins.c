@@ -37,7 +37,7 @@ int nafshBuiltins(void)
  */
 int nafshCd(char **args)
 {
-		if (args[1] == NULL)
+	if (args[1] == NULL)
 	{
 		chdir(getenv("HOME"));
 	}
