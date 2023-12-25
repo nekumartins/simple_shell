@@ -40,7 +40,7 @@ void nafsh(void)
 		{
 			/* Handle Ctrl+D (EOF) by exiting the shell gracefully */
 			free(line);
-			if (interactive) 
+			if (interactive)
 			{
 				write(STDOUT_FILENO, newLine, 1);
 			}
