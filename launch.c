@@ -10,22 +10,18 @@ int nafshLaunch(char **args)
 	pid_t pid;
 	int status;
 	int i;
-
 	 /* Remove comments from the arguments */
-    for (i = 0; args[i] != NULL; i++)
-    {
-        if (args[i][0] == '#')
-        {
-            args[i] = NULL;
-            break;
-        }
-    }
-
-
+	for (i = 0; args[i] != NULL; i++)
+	{
+		if (args[i][0] == '#')
+		{
+			args[i] = NULL;
+			break;
+		}
+	}
 	pid = fork();
 	if (pid == 0)
 	{
-		/*Child process*/
 		if (execvp(args[0], args) == -1)
 		{
 			perror("nafsh");
@@ -34,12 +30,10 @@ int nafshLaunch(char **args)
 	}
 	else if (pid < 0)
 	{
-		/*Fork error*/
 		perror("nafsh");
 	}
 	else
 	{
-		/*Parent process*/
 		do {
 			waitpid(pid, &status, WUNTRACED);
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
@@ -49,8 +43,7 @@ int nafshLaunch(char **args)
 			/*Program was terminated by SIGKILL*/
 			exit(EXIT_SUCCESS);
 		}
-
 		return (WEXITSTATUS(status));
 	}
-		return (1);
+			return (1);
 }

@@ -41,7 +41,11 @@ void nafsh(void)
 		if (line == NULL)
 		{
 			/* Handle Ctrl+D (EOF) by exiting the shell gracefully */
-			write(STDOUT_FILENO, newLine, 1);
+			free(line);
+			if (interactive)
+			{
+				write(STDOUT_FILENO, newLine, 1);
+			}
 			break;
 		}
 		args = nafshSplitLine(line);
