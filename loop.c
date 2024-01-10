@@ -1,6 +1,5 @@
 #include "nafsh.h"
 
-
 /**
  * nafshSigHandler - Prints a new prompt upon a signal.
  * @signum: The signal.
