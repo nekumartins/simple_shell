@@ -15,7 +15,6 @@ void nafshSigHandler(int signum)
  * nafsh - Main loop function
  * Return: none
  */
-
 void nafsh(void)
 {
 	char *line;
