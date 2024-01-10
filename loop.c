@@ -11,7 +11,6 @@ void nafshSigHandler(int signum)
 	signal(SIGINT, nafshSigHandler);
 	write(STDIN_FILENO, newPrompt, 3);
 }
-
 /**
  * nafsh - Main loop function
  * Return: none
