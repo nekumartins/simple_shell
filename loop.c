@@ -55,7 +55,6 @@ void nafsh(void)
  * nafshReadLine - Read line function
  * Return: line
  */
-
 char *nafshReadLine(void)
 {
 	int buffsize = MAX, position = 0;
