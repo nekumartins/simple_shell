@@ -51,7 +51,6 @@ void nafsh(void)
 	} while (status);
 }
 
-
 /**
  * nafshReadLine - Read line function
  * Return: line
