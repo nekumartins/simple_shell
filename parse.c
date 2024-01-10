@@ -1,5 +1,4 @@
 #include "nafsh.h"
-
 /**
  * nafshAtoi - Convert a string to an integer
  * @stri: line
@@ -24,10 +23,8 @@ int nafshAtoi(char *stri)
 		result = result * 10 + (*stri - '0');
 		stri++;
 	}
-
 	return (sign * result);
 }
-
 /**
  * nafshSplitLine - Split a line into tokens
  * @line: line
