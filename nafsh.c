@@ -3,7 +3,6 @@
  * main - Main function
  * Return:Exit Success
  */
-
 int main(void)
 {
 	nafsh();
