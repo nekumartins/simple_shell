@@ -29,7 +29,7 @@ git clone https://github.com/nekumartins/simple-shell.git nafsh
 ```shell
 cd nafsh
 make
-``` 
+```
 - Run the Shell: After compiling, you can run the shell by simply executing the binary.
 
 ```shell
