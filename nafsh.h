@@ -29,6 +29,6 @@ extern int (*builtin_func[]) (char **);
 
 int nafshAtoi(char *stri);
 int nafshBuiltins(void);
-int nafshExecute(char **args);
+int nafshExecute(char **args)
 
 #endif /*NAFSH_H*/
