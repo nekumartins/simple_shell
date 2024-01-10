@@ -30,7 +30,6 @@ void nafsh(void)
 			write(STDOUT_FILENO, prompt, 2);
 			fflush(stdout);
 		}
-
 		/* Read a line of input */
 		line = nafshReadLine();
 
